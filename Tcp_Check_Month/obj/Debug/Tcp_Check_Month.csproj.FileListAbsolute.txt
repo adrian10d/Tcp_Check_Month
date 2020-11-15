@@ -1,0 +1,7 @@
+C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\bin\Debug\Tcp_Check_Month.exe.config
+C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\bin\Debug\Tcp_Check_Month.exe
+C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\bin\Debug\Tcp_Check_Month.pdb
+C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csprojAssemblyReference.cache
+C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csproj.CoreCompileInputs.cache
+C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.exe
+C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.pdb
