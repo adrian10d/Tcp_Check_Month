@@ -112,12 +112,20 @@ namespace Server_Support
         }
         private void rejestrowanie(NetworkStream stream)
         {
+            string filepath = @"\users.csv";
             string powitanie1 = "Podaj login: ";
             byte[] bytes1 = Encoding.ASCII.GetBytes(powitanie1);
             stream.Write(bytes1, 0, bytes1.Length);
             byte[] buffer1 = new byte[Buffer_size];
             int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
             string login = System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
+            if (User.UserExists(login, filepath))
+            {
+                string nazwa_zajeta = "Ten login jest już zajęty";
+                byte[] zajetosc = Encoding.ASCII.GetBytes(nazwa_zajeta);
+                stream.Write(zajetosc, 0, zajetosc.Length);
+                byte[] pusty0 = new byte[Buffer_size];
+            }
             string powitanie2 = "Podaj haslo: ";
             byte[] bytes2 = Encoding.ASCII.GetBytes(powitanie2);
             stream.Write(bytes2, 0, bytes2.Length);

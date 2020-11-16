@@ -14,7 +14,7 @@ namespace Server_Support
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
-
+        public string filepath  = @"\users.csv";
 
         public static bool UserExists(string login, string filepath)
         {
