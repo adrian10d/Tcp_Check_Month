@@ -15,7 +15,7 @@ namespace UsersManager
         public string Surname { get; set; }
         public int Age { get; set; }
 
-        public static void addUser(string ID, string login, string password, string filepath)
+        public static void AddUser(string ID, string login, string password, string filepath)
         {
             try
             {
