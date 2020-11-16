@@ -14,13 +14,13 @@ namespace Server_Support
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
-        public string filepath  = @"\users.csv";
+        public static string filepath  = @"\users.csv";
 
-        public static bool UserExists(string login, string filepath)
+        public static bool UserExists(string login)
         {
             bool exists = false;
 
-            string[] lines = System.IO.File.ReadAllLines(filepath);
+            string[] lines = System.IO.File.ReadAllLines(path: filepath);
             for (int i = 0; i < lines.Length; i++)
             {
                 string[] fields = lines[i].Split(',');
