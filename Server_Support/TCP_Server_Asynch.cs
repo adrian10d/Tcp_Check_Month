@@ -78,52 +78,45 @@ namespace Server_Support
 
         private void logowanie(NetworkStream stream)
         {
-            bool czy_zalogowano = false;
-            while (!czy_zalogowano)
+            string powitanie1 = "Podaj login: ";
+            byte[] bytes1 = Encoding.ASCII.GetBytes(powitanie1);
+            stream.Write(bytes1, 0, bytes1.Length);
+            byte[] buffer1 = new byte[Buffer_size];
+            int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
+            string otrzymane1 = System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
+            byte[] pusty1 = new byte[Buffer_size];
+            stream.Read(pusty1, 0, Buffer_size);
+            if (!User.UserExists(otrzymane1))
             {
-                string powitanie1 = "Podaj login: ";
-                byte[] bytes1 = Encoding.ASCII.GetBytes(powitanie1);
-                stream.Write(bytes1, 0, bytes1.Length);
-                byte[] buffer1 = new byte[Buffer_size];
-                int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
-                string otrzymane1 = System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
-                if (!User.UserExists(otrzymane1))
+                string brak_loginu = "Nie istnieje taki login, zarejestruj sie \n";
+                byte[] zajetosc = Encoding.ASCII.GetBytes(brak_loginu);
+                stream.Write(zajetosc, 0, zajetosc.Length);
+            }
+            else
+            {
+                string powitanie2 = "Podaj haslo: ";
+                byte[] bytes2 = Encoding.ASCII.GetBytes(powitanie2);
+                stream.Write(bytes2, 0, bytes2.Length);
+                byte[] buffer2 = new byte[Buffer_size];
+                int wielkosc2 = stream.Read(buffer2, 0, Buffer_size);
+                string otrzymane2 = System.Text.Encoding.ASCII.GetString(buffer2, 0, wielkosc2);
+                byte[] pusty2 = new byte[Buffer_size];
+                stream.Read(pusty2, 0, Buffer_size);
+                if (User.Login(otrzymane1, otrzymane2))
                 {
-                    string brak_loginu = "Nie istnieje taki login, zarejestruj sie \n";
-                    byte[] zajetosc = Encoding.ASCII.GetBytes(brak_loginu);
-                    stream.Write(zajetosc, 0, zajetosc.Length);
+                    string zalogowano = "Udalo sie zalogowac.";
+                    byte[] bytes_zal = Encoding.ASCII.GetBytes(zalogowano);
+                    stream.Write(bytes_zal, 0, bytes_zal.Length);
+                    gra(stream);
                 }
                 else
                 {
-                    string powitanie2 = "Podaj haslo: ";
-                    byte[] bytes2 = Encoding.ASCII.GetBytes(powitanie2);
-                    stream.Write(bytes2, 0, bytes2.Length);
-                    byte[] pusty1 = new byte[Buffer_size];
-                    stream.Read(pusty1, 0, Buffer_size);
-                    byte[] buffer2 = new byte[Buffer_size];
-                    int wielkosc2 = stream.Read(buffer2, 0, Buffer_size);
-                    string otrzymane2 = System.Text.Encoding.ASCII.GetString(buffer2, 0, wielkosc2);
-                    byte[] pusty2 = new byte[Buffer_size];
-                    stream.Read(pusty2, 0, Buffer_size);
-                    if (User.Login(otrzymane1, otrzymane2))
-                    {
-                        czy_zalogowano = true;
-                        string zalogowano = "Udalo sie zalogowac.";
-                        byte[] bytes_zal = Encoding.ASCII.GetBytes(zalogowano);
-                        stream.Write(bytes_zal, 0, bytes_zal.Length);
-                        gra(stream);
-                    }
-
-
-                    // else
-                    // {
-                    //     string niezalogowano = "Niepoprawny login lub haslo.\n";
-                    //     byte[] bytes_zal = Encoding.ASCII.GetBytes(niezalogowano);
-                    //     stream.Write(bytes_zal, 0, bytes_zal.Length);
-                    //  }
+                    string niezalogowano = "Niepoprawny login lub haslo.\n";
+                    byte[] bytes_zal = Encoding.ASCII.GetBytes(niezalogowano);
+                    stream.Write(bytes_zal, 0, bytes_zal.Length);
                 }
             }
-        }
+        }            
         private void rejestrowanie(NetworkStream stream)
         {
             string powitanie1 = "Podaj login: ";
@@ -132,6 +125,8 @@ namespace Server_Support
             byte[] buffer1 = new byte[Buffer_size];
             int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
             string login = System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
+            byte[] pusty1 = new byte[Buffer_size];
+            stream.Read(pusty1, 0, Buffer_size);
             if (User.UserExists(login))
             {
                 string nazwa_zajeta = "Ten login jest juz zajety \n";
@@ -143,8 +138,6 @@ namespace Server_Support
                 string powitanie2 = "Podaj haslo: ";
                 byte[] bytes2 = Encoding.ASCII.GetBytes(powitanie2);
                 stream.Write(bytes2, 0, bytes2.Length);
-                byte[] pusty1 = new byte[Buffer_size];
-                stream.Read(pusty1, 0, Buffer_size);
                 byte[] buffer2 = new byte[Buffer_size];
                 int wielkosc2 = stream.Read(buffer2, 0, Buffer_size);
                 string haslo = System.Text.Encoding.ASCII.GetString(buffer2, 0, wielkosc2);

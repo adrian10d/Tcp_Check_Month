@@ -14,7 +14,12 @@ namespace Server_Support
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
-        public static string filepath  = @"C:\Users\HP\source\repos\Tcp_Check_Month\Server_Support\users.csv";
+        //string workingDirectory = Environment.CurrentDirectory;
+       // string projectDirectory = Directory.GetParent(User.workingDirectory).Parent.Parent.FullName;
+        //projectDirectory += "\\Server_Support\\users.csv";
+        //public static string filepath  = @"D:\C#\#7\Server_Support\users.csv";
+
+        public static string filepath = (Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Server_Support\\users.csv");
 
         public static bool UserExists(string login)
         {
