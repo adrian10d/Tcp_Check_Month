@@ -15,6 +15,24 @@ namespace UsersManager
         public string Surname { get; set; }
         public int Age { get; set; }
 
+
+        public static bool UserExists(string login, string filepath)
+        {
+            bool exists = false;
+
+            string[] lines = System.IO.File.ReadAllLines(filepath);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] fields = lines[i].Split(',');
+                if (login == fields[1])
+                {
+                    exists = true;
+                }
+            }
+            return exists;
+
+        }
+
         public static void AddUser(string ID, string login, string password, string filepath)
         {
             try
@@ -34,19 +52,19 @@ namespace UsersManager
         {
             bool logged = false;
 
-                string[] lines = System.IO.File.ReadAllLines(filepath);
-                for (int i = 0; i < lines.Length; i++)
+            string[] lines = System.IO.File.ReadAllLines(filepath);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string[] fields = lines[i].Split(',');
+                if (login == fields[1] && password == fields[2])
                 {
-                    string[] fields = lines[i].Split(',');
-                    if (login == fields[1] && password == fields[2])
-                    {
-                        logged = true;
-                    }
+                    logged = true;
+                }
             }
-                return logged;
+            return logged;
 
+
+        }
 
     }
-
-
 }
