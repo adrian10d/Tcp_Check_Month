@@ -14,7 +14,7 @@ namespace Server_Support
         public string Name { get; set; }
         public string Surname { get; set; }
         public int Age { get; set; }
-        public static string filepath  = @"\users.csv";
+        public static string filepath  = @"C:\Users\HP\source\repos\Tcp_Check_Month\Server_Support\users.csv";
 
         public static bool UserExists(string login)
         {
@@ -33,13 +33,15 @@ namespace Server_Support
 
         }
 
-        public static void AddUser(string ID, string login, string password, string filepath)
+        public static void AddUser(string login, string password)
         {
+            string[] lines = System.IO.File.ReadAllLines(path: filepath);
+            int id = lines.Length;
             try
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(filepath, true))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(path: filepath, true))
                 {
-                    file.WriteLine(ID + "," + login + "," + password);
+                    file.WriteLine(id + "," + login + "," + password);
                 }
             }
             catch (Exception e)
@@ -48,11 +50,11 @@ namespace Server_Support
             }
         }
 
-        public static bool Login(string login, string password, string filepath)
+        public static bool Login(string login, string password)
         {
             bool logged = false;
 
-            string[] lines = System.IO.File.ReadAllLines(filepath);
+            string[] lines = System.IO.File.ReadAllLines(path: filepath);
             for (int i = 0; i < lines.Length; i++)
             {
                 string[] fields = lines[i].Split(',');
