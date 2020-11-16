@@ -30,13 +30,20 @@ namespace UsersManager
             }
         }
 
-
-        public static List<User> GetUsers(string filepath)
+        public static bool Login(string login, string password, string filepath)
         {
-            var streamReader = File.OpenText("Pirates.csv");
-            var reader = new CsvReader(streamReader);
-            return reader.GetRecords<User>().ToList();
-        }
+            bool logged = false;
+
+                string[] lines = System.IO.File.ReadAllLines(filepath);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    string[] fields = lines[i].Split(',');
+                    if (login == fields[1] && password == fields[2])
+                    {
+                        logged = true;
+                    }
+            }
+                return logged;
 
 
     }
