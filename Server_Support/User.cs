@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 
 
-namespace UsersManager
+namespace Server_Support
 {
     public class User
     {

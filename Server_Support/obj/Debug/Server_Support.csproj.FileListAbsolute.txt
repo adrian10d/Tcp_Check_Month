@@ -1,0 +1,6 @@
+D:\C#\#5\Server_Support\obj\Debug\Server_Support.csprojAssemblyReference.cache
+D:\C#\#5\Server_Support\obj\Debug\Server_Support.csproj.CoreCompileInputs.cache
+D:\C#\#5\Server_Support\bin\Debug\Server_Support.dll
+D:\C#\#5\Server_Support\bin\Debug\Server_Support.pdb
+D:\C#\#5\Server_Support\obj\Debug\Server_Support.dll
+D:\C#\#5\Server_Support\obj\Debug\Server_Support.pdb

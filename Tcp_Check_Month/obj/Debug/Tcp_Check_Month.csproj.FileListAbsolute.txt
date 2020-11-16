@@ -5,3 +5,13 @@ C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\obj\Debug\Tcp_Check_
 C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csproj.CoreCompileInputs.cache
 C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.exe
 C:\Users\lukas\source\repos\Tcp_Check_Month\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.pdb
+D:\C#\#5\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csprojAssemblyReference.cache
+D:\C#\#5\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csproj.CoreCompileInputs.cache
+D:\C#\#5\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.exe
+D:\C#\#5\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.pdb
+D:\C#\#5\Tcp_Check_Month\bin\Debug\Tcp_Check_Month.exe.config
+D:\C#\#5\Tcp_Check_Month\bin\Debug\Tcp_Check_Month.exe
+D:\C#\#5\Tcp_Check_Month\bin\Debug\Tcp_Check_Month.pdb
+D:\C#\#5\Tcp_Check_Month\bin\Debug\Server_Support.dll
+D:\C#\#5\Tcp_Check_Month\bin\Debug\Server_Support.pdb
+D:\C#\#5\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csproj.CopyComplete
