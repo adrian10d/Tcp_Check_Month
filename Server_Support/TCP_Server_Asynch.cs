@@ -44,32 +44,20 @@ namespace Server_Support
         }
         protected override void BeginDataTransmission(NetworkStream stream)
         {
+            Console.Out.WriteLine("Przeszlo 1.");
             int wybor = 0;
             while (true)
             {
-                string welcome1 = "1. Chce sie zalogowac.\t2. Chce sie zarejestrowac.";
-                string welcome2 = "Podaj wybor: ";
-                byte[] bytes1_1 = Encoding.ASCII.GetBytes(welcome1);
-                stream.Write(bytes1_1, 0, bytes1_1.Length);
-                byte[] bytes1_2 = Encoding.ASCII.GetBytes(welcome2);
-                stream.Write(bytes1_2, 0, bytes1_2.Length);
                 byte[] buffer = new byte[Buffer_size];
                 int wielkosc = stream.Read(buffer, 0, Buffer_size);
                 string otrzymane = System.Text.Encoding.ASCII.GetString(buffer, 0, wielkosc);
-                byte[] pusty = new byte[Buffer_size];
-                stream.Read(pusty, 0, Buffer_size);
-                if (Int32.TryParse(otrzymane, out wybor) && (wybor == 1 || wybor == 2))
+                if (otrzymane[0] == '1')
                 {
-                    if (wybor == 1)
-                        logowanie(stream);
-                    else if (wybor == 2)
-                        rejestrowanie(stream);
+                    logowanie(stream);
                 }
-                else
+                else if (otrzymane == "2")
                 {
-                    string wyb = "Niepoprawny wybor.";
-                    byte[] bytes1_3 = Encoding.ASCII.GetBytes(wyb);
-                    stream.Write(bytes1_3, 0, bytes1_3.Length);
+                    rejestrowanie(stream);
                 }
             }
         }
@@ -78,40 +66,30 @@ namespace Server_Support
 
         private void logowanie(NetworkStream stream)
         {
-            string powitanie1 = "Podaj login: ";
-            byte[] bytes1 = Encoding.ASCII.GetBytes(powitanie1);
-            stream.Write(bytes1, 0, bytes1.Length);
             byte[] buffer1 = new byte[Buffer_size];
             int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
             string otrzymane1 = System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
-            byte[] pusty1 = new byte[Buffer_size];
-            stream.Read(pusty1, 0, Buffer_size);
+            byte[] buffer2 = new byte[Buffer_size];
+            int wielkosc2 = stream.Read(buffer2, 0, Buffer_size);
+            string otrzymane2 = System.Text.Encoding.ASCII.GetString(buffer2, 0, wielkosc2);
             if (!User.UserExists(otrzymane1))
             {
-                string brak_loginu = "Nie istnieje taki login, zarejestruj sie \n";
-                byte[] zajetosc = Encoding.ASCII.GetBytes(brak_loginu);
-                stream.Write(zajetosc, 0, zajetosc.Length);
+                string niezalogowano = "0";
+                byte[] bytes_zal = Encoding.ASCII.GetBytes(niezalogowano);
+                stream.Write(bytes_zal, 0, bytes_zal.Length);
             }
             else
             {
-                string powitanie2 = "Podaj haslo: ";
-                byte[] bytes2 = Encoding.ASCII.GetBytes(powitanie2);
-                stream.Write(bytes2, 0, bytes2.Length);
-                byte[] buffer2 = new byte[Buffer_size];
-                int wielkosc2 = stream.Read(buffer2, 0, Buffer_size);
-                string otrzymane2 = System.Text.Encoding.ASCII.GetString(buffer2, 0, wielkosc2);
-                byte[] pusty2 = new byte[Buffer_size];
-                stream.Read(pusty2, 0, Buffer_size);
                 if (User.Login(otrzymane1, otrzymane2))
                 {
-                    string zalogowano = "Udalo sie zalogowac.";
+                    string zalogowano = "1";
                     byte[] bytes_zal = Encoding.ASCII.GetBytes(zalogowano);
                     stream.Write(bytes_zal, 0, bytes_zal.Length);
                     gra(stream);
                 }
                 else
                 {
-                    string niezalogowano = "Niepoprawny login lub haslo.\n";
+                    string niezalogowano = "0";
                     byte[] bytes_zal = Encoding.ASCII.GetBytes(niezalogowano);
                     stream.Write(bytes_zal, 0, bytes_zal.Length);
                 }
@@ -119,31 +97,24 @@ namespace Server_Support
         }            
         private void rejestrowanie(NetworkStream stream)
         {
-            string powitanie1 = "Podaj login: ";
-            byte[] bytes1 = Encoding.ASCII.GetBytes(powitanie1);
-            stream.Write(bytes1, 0, bytes1.Length);
             byte[] buffer1 = new byte[Buffer_size];
             int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
             string login = System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
-            byte[] pusty1 = new byte[Buffer_size];
-            stream.Read(pusty1, 0, Buffer_size);
+            byte[] buffer2 = new byte[Buffer_size];
+            int wielkosc2 = stream.Read(buffer2, 0, Buffer_size);
+            string haslo = System.Text.Encoding.ASCII.GetString(buffer2, 0, wielkosc2);
             if (User.UserExists(login))
             {
-                string nazwa_zajeta = "Ten login jest juz zajety \n";
+                string nazwa_zajeta = "0";
                 byte[] zajetosc = Encoding.ASCII.GetBytes(nazwa_zajeta);
                 stream.Write(zajetosc, 0, zajetosc.Length);
             }
             else
             {
-                string powitanie2 = "Podaj haslo: ";
-                byte[] bytes2 = Encoding.ASCII.GetBytes(powitanie2);
-                stream.Write(bytes2, 0, bytes2.Length);
-                byte[] buffer2 = new byte[Buffer_size];
-                int wielkosc2 = stream.Read(buffer2, 0, Buffer_size);
-                string haslo = System.Text.Encoding.ASCII.GetString(buffer2, 0, wielkosc2);
                 User.AddUser(login, haslo);
-                byte[] pusty2 = new byte[Buffer_size];
-                stream.Read(pusty2, 0, Buffer_size);
+                string nazwa_zajeta = "1";
+                byte[] zajetosc = Encoding.ASCII.GetBytes(nazwa_zajeta);
+                stream.Write(zajetosc, 0, zajetosc.Length);
             }
         }
         private void gra(NetworkStream stream)
@@ -152,65 +123,54 @@ namespace Server_Support
             {
                 try
                 {
-                    string powitanie = "Podaj numer miesiaca a otrzymasz jego nazwe(jesli chcesz zakonczyc gre to napisz \"koniec\"):";
-                    byte[] bytes = Encoding.ASCII.GetBytes(powitanie);
-                    stream.Write(bytes, 0, bytes.Length);
                     string odp;
                     byte[] buffer1 = new byte[Buffer_size];
                     int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
                     string otrzymane = System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
-                    byte[] pusty1 = new byte[Buffer_size];
-                    stream.Read(pusty1, 0, Buffer_size);
                     if (otrzymane == "koniec")
                         break;
-                    if (Int32.TryParse(otrzymane, out int miesiac))
+                    string trimmed = String.Concat(otrzymane.Where(c => !Char.IsWhiteSpace(c)));
+                    switch (trimmed)
                     {
-                        switch (miesiac)
-                        {
-                            case 1:
-                                odp = "Styczen\n";
-                                break;
-                            case 2:
-                                odp = "Luty\n";
-                                break;
-                            case 3:
-                                odp = "Marzec\n";
-                                break;
-                            case 4:
-                                odp = "Kwiecien\n";
-                                break;
-                            case 5:
-                                odp = "Maj\n";
-                                break;
-                            case 6:
-                                odp = "Czerwiec\n";
-                                break;
-                            case 7:
-                                odp = "Lipiec\n";
-                                break;
-                            case 8:
-                                odp = "Sierpien\n";
-                                break;
-                            case 9:
-                                odp = "Wrzesien\n";
-                                break;
-                            case 10:
-                                odp = "Pazdziernik\n";
-                                break;
-                            case 11:
-                                odp = "Listopad\n";
-                                break;
-                            case 12:
-                                odp = "Grudzien\n";
-                                break;
-                            default:
-                                odp = "Nie ma takiego miesiaca.\n";
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        odp = "Podano zly format.\n";
+                        case "1":
+                            odp = "Styczen";
+                            break;
+                        case "2":
+                            odp = "Luty";
+                            break;
+                        case "3":
+                            odp = "Marzec";
+                            break;
+                        case "4":
+                            odp = "Kwiecien";
+                            break;
+                        case "5":
+                            odp = "Maj";
+                            break;
+                        case "6":
+                            odp = "Czerwiec";
+                            break;
+                        case "7":
+                            odp = "Lipiec";
+                            break;
+                        case "8":
+                            odp = "Sierpien";
+                            break;
+                        case "9":
+                            odp = "Wrzesien";
+                            break;
+                        case "10":
+                            odp = "Pazdziernik";
+                            break;
+                        case "11":
+                            odp = "Listopad";
+                            break;
+                        case "12":
+                            odp = "Grudzien";
+                            break;
+                        default:
+                            odp = "Nie ma takiego miesiaca.";
+                            break;
                     }
                     byte[] odp_bytes = Encoding.ASCII.GetBytes(odp);
                     stream.Write(odp_bytes, 0, odp_bytes.Length);

@@ -35,3 +35,13 @@ D:\C#\#7\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csproj.CoreCompileInputs.cach
 D:\C#\#7\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csproj.CopyComplete
 D:\C#\#7\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.exe
 D:\C#\#7\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.pdb
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Tcp_Check_Month\bin\Debug\Tcp_Check_Month.exe.config
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Tcp_Check_Month\bin\Debug\Tcp_Check_Month.exe
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Tcp_Check_Month\bin\Debug\Tcp_Check_Month.pdb
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Tcp_Check_Month\bin\Debug\Server_Support.dll
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Tcp_Check_Month\bin\Debug\Server_Support.pdb
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csprojAssemblyReference.cache
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csproj.CoreCompileInputs.cache
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.csproj.CopyComplete
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.exe
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Tcp_Check_Month\obj\Debug\Tcp_Check_Month.pdb

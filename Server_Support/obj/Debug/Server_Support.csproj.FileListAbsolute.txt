@@ -16,3 +16,9 @@ D:\C#\#7\Server_Support\obj\Debug\Server_Support.csprojAssemblyReference.cache
 D:\C#\#7\Server_Support\obj\Debug\Server_Support.csproj.CoreCompileInputs.cache
 D:\C#\#7\Server_Support\obj\Debug\Server_Support.dll
 D:\C#\#7\Server_Support\obj\Debug\Server_Support.pdb
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Server_Support\bin\Debug\Server_Support.dll
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Server_Support\bin\Debug\Server_Support.pdb
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Server_Support\obj\Debug\Server_Support.csprojAssemblyReference.cache
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Server_Support\obj\Debug\Server_Support.csproj.CoreCompileInputs.cache
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Server_Support\obj\Debug\Server_Support.dll
+C:\Users\lukas\Source\Repos\Tcp_Check_Month3\Server_Support\obj\Debug\Server_Support.pdb
