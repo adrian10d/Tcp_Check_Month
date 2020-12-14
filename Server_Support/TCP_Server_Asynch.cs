@@ -44,7 +44,6 @@ namespace Server_Support
         }
         protected override void BeginDataTransmission(NetworkStream stream)
         {
-            Console.Out.WriteLine("Przeszlo 1.");
             int wybor = 0;
             while (true)
             {
