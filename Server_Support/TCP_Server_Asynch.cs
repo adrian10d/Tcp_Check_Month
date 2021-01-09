@@ -12,6 +12,9 @@ namespace Server_Support
     public class TCP_Server_Asynch : TCP_Server
     {
         public delegate void TransmissionDataDelegate(NetworkStream stream);
+        public int zmienna = 0;
+        public string login;
+        public List<string> lista_zalogowanych = new List<string>();
         public TCP_Server_Asynch(IPAddress IP, int port) : base(IP, port)
         {
 
@@ -50,6 +53,7 @@ namespace Server_Support
                 byte[] buffer = new byte[Buffer_size];
                 int wielkosc = stream.Read(buffer, 0, Buffer_size);
                 string otrzymane = System.Text.Encoding.ASCII.GetString(buffer, 0, wielkosc);
+                zmienna++;
                 if (otrzymane[0] == '1')
                 {
                     logowanie(stream);
@@ -79,12 +83,15 @@ namespace Server_Support
             }
             else
             {
-                if (User.Login(otrzymane1, otrzymane2))
+                if (User.Login(otrzymane1, otrzymane2) && !lista_zalogowanych.Contains(otrzymane1))
                 {
+                    lista_zalogowanych.Add(otrzymane1);
+                    login = otrzymane1;
                     string zalogowano = "1";
                     byte[] bytes_zal = Encoding.ASCII.GetBytes(zalogowano);
                     stream.Write(bytes_zal, 0, bytes_zal.Length);
                     gra(stream);
+                    lista_zalogowanych.Remove(otrzymane1);
                 }
                 else
                 {
@@ -127,7 +134,10 @@ namespace Server_Support
                     int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
                     string otrzymane = System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
                     if (otrzymane == "koniec")
+                    {
+                        //lista_zalogowanych.Remove(login);
                         break;
+                    }
                     string trimmed = String.Concat(otrzymane.Where(c => !Char.IsWhiteSpace(c)));
                     switch (trimmed)
                     {
