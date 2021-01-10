@@ -23,19 +23,12 @@ namespace ServerGUI
         private bool uruchomiony = false;
         private void Form1_Load(object sender, EventArgs e)
         {
-            //moj = new TCP_Server_Asynch(IPAddress.Parse("127.0.0.1"), 2048);
             this.textBox1.Text = "127.0.0.1";
             this.textBox2.Text = "2048";
         }
 
-        private void Metoda()
-        {
-            moj.Start();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            //moj.Start();
             if(uruchomiony==false)
             {
                 uruchomiony = true;
@@ -66,10 +59,6 @@ namespace ServerGUI
             for (int i = listView1.Items.Count - 1; i >= 0; i--)
             {
                 listView1.Items[i].Remove();
-                //if (listView1.Items[i].Selected)
-                //{
-                    //listView1.Items[i].Remove();
-                //}
             }
             for (int i=0; i<moj.lista_zalogowanych.Count();i++)
             {

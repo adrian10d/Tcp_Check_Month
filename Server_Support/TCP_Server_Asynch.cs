@@ -62,6 +62,8 @@ namespace Server_Support
                 {
                     rejestrowanie(stream);
                 }
+                else if (otrzymane == "klientkonczypolaczenie")
+                    break;
             }
         }
 
