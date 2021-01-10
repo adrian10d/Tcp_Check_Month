@@ -47,6 +47,7 @@
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="admin.csv" />
     <None Include="users.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

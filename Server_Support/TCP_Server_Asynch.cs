@@ -83,14 +83,15 @@ namespace Server_Support
             }
             else
             {
-                if (User.Login(otrzymane1, otrzymane2) && !lista_zalogowanych.Contains(otrzymane1))
+                if (User.Login(otrzymane1, otrzymane2) && (!lista_zalogowanych.Contains(otrzymane1)))
                 {
                     lista_zalogowanych.Add(otrzymane1);
                     login = otrzymane1;
                     string zalogowano = "1";
                     byte[] bytes_zal = Encoding.ASCII.GetBytes(zalogowano);
                     stream.Write(bytes_zal, 0, bytes_zal.Length);
-                    gra(stream);
+                    //gra(stream);
+                    baza_filmow(stream);
                     lista_zalogowanych.Remove(otrzymane1);
                 }
                 else
@@ -192,6 +193,45 @@ namespace Server_Support
                 }
             }
         }
+
+        private void baza_filmow(NetworkStream stream)
+        {
+            string filepath = (Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Server_Support\\Client_Movies\\"+login+".csv");
+            string[] lines = System.IO.File.ReadAllLines(path: filepath);
+            for(int i = 0; i<lines.Length;i++)
+            {
+                byte[] msg = Encoding.ASCII.GetBytes(lines[i]);
+                stream.Write(msg, 0, msg.Length);
+                byte[] buffer = new byte[1024];
+                int wielkosc = stream.Read(buffer, 0, 1024);
+            }
+            
+            byte[] kon = Encoding.ASCII.GetBytes("endoffile");
+            stream.Write(kon, 0, kon.Length);
+
+            string otrzymane = "";
+            while(otrzymane!="wyloguj00x015")
+            {
+                byte[] buffer1 = new byte[Buffer_size];
+                int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
+                otrzymane = System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
+                if(otrzymane!="wyloguj00x015" && otrzymane!="ok133")
+                {
+                    try
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(path: filepath, true))
+                        {
+                            file.WriteLine(otrzymane);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        throw new ApplicationException("Couldn't add the movie into the base", e);
+                    }
+                }
+            }
+        }
+
         public override void Start()
         {
 
