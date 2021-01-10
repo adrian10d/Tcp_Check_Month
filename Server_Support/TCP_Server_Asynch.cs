@@ -122,6 +122,9 @@ namespace Server_Support
                 string nazwa_zajeta = "1";
                 byte[] zajetosc = Encoding.ASCII.GetBytes(nazwa_zajeta);
                 stream.Write(zajetosc, 0, zajetosc.Length);
+                string path = (Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Server_Support\\Client_Movies\\" + login + ".csv");
+                var plik = File.Create(path);
+                plik.Close();
             }
         }
         private void gra(NetworkStream stream)

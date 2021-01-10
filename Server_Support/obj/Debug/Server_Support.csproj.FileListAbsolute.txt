@@ -28,3 +28,9 @@ C:\Users\lukas\Source\Repos\Tcp_Check_Month\ihope\Server_Support\obj\Debug\Serve
 C:\Users\lukas\Source\Repos\Tcp_Check_Month\ihope\Server_Support\obj\Debug\Server_Support.csproj.CoreCompileInputs.cache
 C:\Users\lukas\Source\Repos\Tcp_Check_Month\ihope\Server_Support\obj\Debug\Server_Support.dll
 C:\Users\lukas\Source\Repos\Tcp_Check_Month\ihope\Server_Support\obj\Debug\Server_Support.pdb
+C:\Users\HP\Source\Repos\Tcp_Check_Month_0.1\Server_Support\bin\Debug\Server_Support.dll
+C:\Users\HP\Source\Repos\Tcp_Check_Month_0.1\Server_Support\bin\Debug\Server_Support.pdb
+C:\Users\HP\Source\Repos\Tcp_Check_Month_0.1\Server_Support\obj\Debug\Server_Support.csprojAssemblyReference.cache
+C:\Users\HP\Source\Repos\Tcp_Check_Month_0.1\Server_Support\obj\Debug\Server_Support.csproj.CoreCompileInputs.cache
+C:\Users\HP\Source\Repos\Tcp_Check_Month_0.1\Server_Support\obj\Debug\Server_Support.dll
+C:\Users\HP\Source\Repos\Tcp_Check_Month_0.1\Server_Support\obj\Debug\Server_Support.pdb
