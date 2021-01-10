@@ -24,3 +24,16 @@ C:\Users\HP\Source\Repos\Tcp_Check_Month_0.1\ServerGUI\obj\Debug\ServerGUI.cspro
 C:\Users\HP\Source\Repos\Tcp_Check_Month_0.1\ServerGUI\obj\Debug\ServerGUI.csproj.CopyComplete
 C:\Users\HP\Source\Repos\Tcp_Check_Month_0.1\ServerGUI\obj\Debug\ServerGUI.exe
 C:\Users\HP\Source\Repos\Tcp_Check_Month_0.1\ServerGUI\obj\Debug\ServerGUI.pdb
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\bin\Debug\ServerGUI.exe.config
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\bin\Debug\ServerGUI.exe
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\bin\Debug\ServerGUI.pdb
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\bin\Debug\Server_Support.dll
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\bin\Debug\Server_Support.pdb
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\obj\Debug\ServerGUI.csprojAssemblyReference.cache
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\obj\Debug\ServerGUI.Form1.resources
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\obj\Debug\ServerGUI.Properties.Resources.resources
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\obj\Debug\ServerGUI.csproj.GenerateResource.cache
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\obj\Debug\ServerGUI.csproj.CoreCompileInputs.cache
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\obj\Debug\ServerGUI.csproj.CopyComplete
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\obj\Debug\ServerGUI.exe
+C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\ServerGUI\obj\Debug\ServerGUI.pdb

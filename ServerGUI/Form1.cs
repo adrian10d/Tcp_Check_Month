@@ -20,9 +20,12 @@ namespace ServerGUI
             InitializeComponent();
         }
         TCP_Server_Asynch moj;
+        private bool uruchomiony = false;
         private void Form1_Load(object sender, EventArgs e)
         {
-            moj = new TCP_Server_Asynch(IPAddress.Parse("127.0.0.1"), 2048);
+            //moj = new TCP_Server_Asynch(IPAddress.Parse("127.0.0.1"), 2048);
+            this.textBox1.Text = "127.0.0.1";
+            this.textBox2.Text = "2048";
         }
 
         private void Metoda()
@@ -33,23 +36,28 @@ namespace ServerGUI
         private void button1_Click(object sender, EventArgs e)
         {
             //moj.Start();
-            Thread MyThread = null;
-            try
+            if(uruchomiony==false)
             {
-                ThreadStart ThreadMethod = new ThreadStart(moj.Start);
-                MyThread = new Thread(ThreadMethod);
-            }
-            catch (Exception d)
-            {
-                return;
-            }
-            try
-            {
-                MyThread.Start();
-            }
-            catch (Exception d)
-            {
-                
+                uruchomiony = true;
+                moj = new TCP_Server_Asynch(IPAddress.Parse(this.textBox1.Text), Int32.Parse(this.textBox2.Text));
+                Thread MyThread = null;
+                try
+                {
+                    ThreadStart ThreadMethod = new ThreadStart(moj.Start);
+                    MyThread = new Thread(ThreadMethod);
+                }
+                catch (Exception d)
+                {
+                    return;
+                }
+                try
+                {
+                    MyThread.Start();
+                }
+                catch (Exception d)
+                {
+
+                }
             }
         }
 
@@ -71,5 +79,14 @@ namespace ServerGUI
             }
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
