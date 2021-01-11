@@ -175,8 +175,7 @@ namespace Server_Support
         {
             string filepath = (Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Server_Support\\Client_Movies\\"+login+".csv");
             string[] lines = System.IO.File.ReadAllLines(path: filepath);
-            wyslij_baze_filmow(stream);
-            /*
+            //wyslij_baze_filmow(stream);
             for(int i = 0; i<lines.Length;i++)
             {
                 byte[] msg = Encoding.ASCII.GetBytes(lines[i]);
@@ -208,7 +207,7 @@ namespace Server_Support
                         throw new ApplicationException("Couldn't add the movie into the base", e);
                     }
                 }
-            }*/
+            }
         }
 
         public override void Start()

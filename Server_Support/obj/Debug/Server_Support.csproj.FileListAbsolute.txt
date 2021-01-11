@@ -40,3 +40,9 @@ C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\Server_Support\obj\Debug\
 C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\Server_Support\obj\Debug\Server_Support.csproj.CoreCompileInputs.cache
 C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\Server_Support\obj\Debug\Server_Support.dll
 C:\Users\lukas\Source\Repos\Tcp_Check_Monthplisdzialaj\Server_Support\obj\Debug\Server_Support.pdb
+C:\Users\lukas\Source\Repos\Test_serwer\Server_Support\bin\Debug\Server_Support.dll
+C:\Users\lukas\Source\Repos\Test_serwer\Server_Support\bin\Debug\Server_Support.pdb
+C:\Users\lukas\Source\Repos\Test_serwer\Server_Support\obj\Debug\Server_Support.csprojAssemblyReference.cache
+C:\Users\lukas\Source\Repos\Test_serwer\Server_Support\obj\Debug\Server_Support.csproj.CoreCompileInputs.cache
+C:\Users\lukas\Source\Repos\Test_serwer\Server_Support\obj\Debug\Server_Support.dll
+C:\Users\lukas\Source\Repos\Test_serwer\Server_Support\obj\Debug\Server_Support.pdb
