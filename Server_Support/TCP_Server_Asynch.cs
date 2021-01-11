@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Server_Support
@@ -129,80 +130,53 @@ namespace Server_Support
                 plik.Close();
             }
         }
-        private void gra(NetworkStream stream)
+
+        private void wyslij(NetworkStream stream, string wiadomosc)
         {
-            while (true)
+            byte[] msg = Encoding.ASCII.GetBytes(wiadomosc);
+            stream.Write(msg, 0, msg.Length);
+        }
+
+        private string odbierz(NetworkStream stream)
+        {
+            byte[] buffer1 = new byte[Buffer_size];
+            int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
+            return System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
+        }
+
+
+
+        private void wyslij_baze_filmow(NetworkStream stream)
+        {
+            string filepath = (Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Server_Support\\movies.csv");
+            StreamReader sr = new StreamReader(filepath);
+            string naglowek = sr.ReadLine();
+            wyslij(stream, naglowek);
+            if(odbierz(stream)!= "1")
             {
-                try
-                {
-                    string odp;
-                    byte[] buffer1 = new byte[Buffer_size];
-                    int wielkosc1 = stream.Read(buffer1, 0, Buffer_size);
-                    string otrzymane = System.Text.Encoding.ASCII.GetString(buffer1, 0, wielkosc1);
-                    if (otrzymane == "koniec")
-                    {
-                        //lista_zalogowanych.Remove(login);
-                        break;
-                    }
-                    string trimmed = String.Concat(otrzymane.Where(c => !Char.IsWhiteSpace(c)));
-                    switch (trimmed)
-                    {
-                        case "1":
-                            odp = "Styczen";
-                            break;
-                        case "2":
-                            odp = "Luty";
-                            break;
-                        case "3":
-                            odp = "Marzec";
-                            break;
-                        case "4":
-                            odp = "Kwiecien";
-                            break;
-                        case "5":
-                            odp = "Maj";
-                            break;
-                        case "6":
-                            odp = "Czerwiec";
-                            break;
-                        case "7":
-                            odp = "Lipiec";
-                            break;
-                        case "8":
-                            odp = "Sierpien";
-                            break;
-                        case "9":
-                            odp = "Wrzesien";
-                            break;
-                        case "10":
-                            odp = "Pazdziernik";
-                            break;
-                        case "11":
-                            odp = "Listopad";
-                            break;
-                        case "12":
-                            odp = "Grudzien";
-                            break;
-                        default:
-                            odp = "Nie ma takiego miesiaca.";
-                            break;
-                    }
-                    byte[] odp_bytes = Encoding.ASCII.GetBytes(odp);
-                    stream.Write(odp_bytes, 0, odp_bytes.Length);
-                }
-                catch (IOException e)
-                {
-
-                    break;
-
-                }
+                wyslij(stream, "blad");
             }
+            else
+            {
+                while (!sr.EndOfStream)
+                {
+                    string wiersz = sr.ReadLine();
+                    wyslij(stream, wiersz);
+                    if (odbierz(stream) != "1")
+                        break;
+                }
+                wyslij(stream, "endoffile");
+            }
+
+
         }
 
         private void baza_filmow(NetworkStream stream)
         {
             string filepath = (Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Server_Support\\Client_Movies\\"+login+".csv");
             string[] lines = System.IO.File.ReadAllLines(path: filepath);
+            wyslij_baze_filmow(stream);
+            /*
             for(int i = 0; i<lines.Length;i++)
             {
                 byte[] msg = Encoding.ASCII.GetBytes(lines[i]);
@@ -234,7 +208,7 @@ namespace Server_Support
                         throw new ApplicationException("Couldn't add the movie into the base", e);
                     }
                 }
-            }
+            }*/
         }
 
         public override void Start()
